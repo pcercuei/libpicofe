@@ -40,7 +40,7 @@ int plat_is_dir(const char *path)
 	return 0;
 }
 
-int plat_get_root_dir(char *dst, int len)
+int plat_get_skin_dir(char *dst, int len)
 {
 	int j, ret;
 
@@ -53,11 +53,24 @@ int plat_get_root_dir(char *dst, int len)
 
 	for (j = strlen(dst); j > 0; j--)
 		if (dst[j] == '/') {
-			dst[++j] = 0;
+			memcpy(&dst[j + 1], "skin/", sizeof "skin/");
 			break;
 		}
 
-	return j;
+	return j + sizeof("skin/");
+
+}
+
+#define ROOT_FOLDER "/.picodrive/"
+int plat_get_root_dir(char *dst, int len)
+{
+	char *home = getenv("HOME");
+	size_t nb = strlen(home);
+
+	memcpy(dst, home, nb);
+	memcpy(dst + nb, ROOT_FOLDER, sizeof ROOT_FOLDER);
+
+	return nb + sizeof(ROOT_FOLDER) - 1;
 }
 
 #ifdef __GP2X__
