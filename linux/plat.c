@@ -19,6 +19,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 #include "../plat.h"
 
@@ -69,6 +70,7 @@ int plat_get_root_dir(char *dst, int len)
 
 	memcpy(dst, home, nb);
 	memcpy(dst + nb, ROOT_FOLDER, sizeof ROOT_FOLDER);
+	mkdir(dst, 0755);
 
 	return nb + sizeof(ROOT_FOLDER) - 1;
 }
