@@ -63,6 +63,7 @@ static void in_sdl_probe(const in_drv_t *drv)
 		}
 		state->joy = joy;
 		state->joy_id = i;
+		state->drv = drv;
 
 		snprintf(name, sizeof(name), IN_SDL_PREFIX "%s", SDL_JoystickName(i));
 		in_register(name, -1, state, SDLK_LAST, pdata->key_names, 0);
