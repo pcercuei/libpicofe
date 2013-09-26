@@ -29,142 +29,9 @@ struct in_sdl_state {
 
 static void (*ext_event_handler)(void *event);
 
-static const char * const in_sdl_keys[SDLK_LAST] = {
-	[SDLK_BACKSPACE] = "backspace",
-	[SDLK_TAB] = "tab",
-	[SDLK_CLEAR] = "clear",
-	[SDLK_RETURN] = "return",
-	[SDLK_PAUSE] = "pause",
-	[SDLK_ESCAPE] = "escape",
-	[SDLK_SPACE] = "space",
-	[SDLK_EXCLAIM]  = "!",
-	[SDLK_QUOTEDBL]  = "\"",
-	[SDLK_HASH]  = "#",
-	[SDLK_DOLLAR]  = "$",
-	[SDLK_AMPERSAND]  = "&",
-	[SDLK_QUOTE] = "'",
-	[SDLK_LEFTPAREN] = "(",
-	[SDLK_RIGHTPAREN] = ")",
-	[SDLK_ASTERISK] = "*",
-	[SDLK_PLUS] = "+",
-	[SDLK_COMMA] = ",",
-	[SDLK_MINUS] = "-",
-	[SDLK_PERIOD] = ".",
-	[SDLK_SLASH] = "/",
-	[SDLK_0] = "0",
-	[SDLK_1] = "1",
-	[SDLK_2] = "2",
-	[SDLK_3] = "3",
-	[SDLK_4] = "4",
-	[SDLK_5] = "5",
-	[SDLK_6] = "6",
-	[SDLK_7] = "7",
-	[SDLK_8] = "8",
-	[SDLK_9] = "9",
-	[SDLK_COLON] = ":",
-	[SDLK_SEMICOLON] = ";",
-	[SDLK_LESS] = "<",
-	[SDLK_EQUALS] = "=",
-	[SDLK_GREATER] = ">",
-	[SDLK_QUESTION] = "?",
-	[SDLK_AT] = "@",
-	[SDLK_LEFTBRACKET] = "[",
-	[SDLK_BACKSLASH] = "\\",
-	[SDLK_RIGHTBRACKET] = "]",
-	[SDLK_CARET] = "^",
-	[SDLK_UNDERSCORE] = "_",
-	[SDLK_BACKQUOTE] = "`",
-	[SDLK_a] = "a",
-	[SDLK_b] = "b",
-	[SDLK_c] = "c",
-	[SDLK_d] = "d",
-	[SDLK_e] = "e",
-	[SDLK_f] = "f",
-	[SDLK_g] = "g",
-	[SDLK_h] = "h",
-	[SDLK_i] = "i",
-	[SDLK_j] = "j",
-	[SDLK_k] = "k",
-	[SDLK_l] = "l",
-	[SDLK_m] = "m",
-	[SDLK_n] = "n",
-	[SDLK_o] = "o",
-	[SDLK_p] = "p",
-	[SDLK_q] = "q",
-	[SDLK_r] = "r",
-	[SDLK_s] = "s",
-	[SDLK_t] = "t",
-	[SDLK_u] = "u",
-	[SDLK_v] = "v",
-	[SDLK_w] = "w",
-	[SDLK_x] = "x",
-	[SDLK_y] = "y",
-	[SDLK_z] = "z",
-	[SDLK_DELETE] = "delete",
-
-	[SDLK_KP0] = "[0]",
-	[SDLK_KP1] = "[1]",
-	[SDLK_KP2] = "[2]",
-	[SDLK_KP3] = "[3]",
-	[SDLK_KP4] = "[4]",
-	[SDLK_KP5] = "[5]",
-	[SDLK_KP6] = "[6]",
-	[SDLK_KP7] = "[7]",
-	[SDLK_KP8] = "[8]",
-	[SDLK_KP9] = "[9]",
-	[SDLK_KP_PERIOD] = "[.]",
-	[SDLK_KP_DIVIDE] = "[/]",
-	[SDLK_KP_MULTIPLY] = "[*]",
-	[SDLK_KP_MINUS] = "[-]",
-	[SDLK_KP_PLUS] = "[+]",
-	[SDLK_KP_ENTER] = "enter",
-	[SDLK_KP_EQUALS] = "equals",
-
-	[SDLK_UP] = "up",
-	[SDLK_DOWN] = "down",
-	[SDLK_RIGHT] = "right",
-	[SDLK_LEFT] = "left",
-	[SDLK_INSERT] = "insert",
-	[SDLK_HOME] = "home",
-	[SDLK_END] = "end",
-	[SDLK_PAGEUP] = "page up",
-	[SDLK_PAGEDOWN] = "page down",
-
-	[SDLK_F1] = "f1",
-	[SDLK_F2] = "f2",
-	[SDLK_F3] = "f3",
-	[SDLK_F4] = "f4",
-	[SDLK_F5] = "f5",
-	[SDLK_F6] = "f6",
-	[SDLK_F7] = "f7",
-	[SDLK_F8] = "f8",
-	[SDLK_F9] = "f9",
-	[SDLK_F10] = "f10",
-	[SDLK_F11] = "f11",
-	[SDLK_F12] = "f12",
-	[SDLK_F13] = "f13",
-	[SDLK_F14] = "f14",
-	[SDLK_F15] = "f15",
-
-	[SDLK_NUMLOCK] = "numlock",
-	[SDLK_CAPSLOCK] = "caps lock",
-	[SDLK_SCROLLOCK] = "scroll lock",
-	[SDLK_RSHIFT] = "right shift",
-	[SDLK_LSHIFT] = "left shift",
-	[SDLK_RCTRL] = "right ctrl",
-	[SDLK_LCTRL] = "left ctrl",
-	[SDLK_RALT] = "right alt",
-	[SDLK_LALT] = "left alt",
-	[SDLK_RMETA] = "right meta",
-	[SDLK_LMETA] = "left meta",
-	[SDLK_LSUPER] = "left super",	/* "Windows" keys */
-	[SDLK_RSUPER] = "right super",	
-	[SDLK_MODE] = "alt gr",
-	[SDLK_COMPOSE] = "compose",
-};
-
 static void in_sdl_probe(const in_drv_t *drv)
 {
+	const struct in_sdl_pdata *pdata = drv->pdata;
 	struct in_sdl_state *state;
 	SDL_Joystick *joy;
 	int i, joycount;
@@ -178,7 +45,7 @@ static void in_sdl_probe(const in_drv_t *drv)
 
 	state->drv = drv;
 	in_register(IN_SDL_PREFIX "keys", -1, state, SDLK_LAST,
-		in_sdl_keys, 0);
+		pdata->key_names, 0);
 
 	/* joysticks go here too */
 	SDL_InitSubSystem(SDL_INIT_JOYSTICK);
@@ -198,7 +65,7 @@ static void in_sdl_probe(const in_drv_t *drv)
 		state->joy_id = i;
 
 		snprintf(name, sizeof(name), IN_SDL_PREFIX "%s", SDL_JoystickName(i));
-		in_register(name, -1, state, SDLK_LAST, in_sdl_keys, 0);
+		in_register(name, -1, state, SDLK_LAST, pdata->key_names, 0);
 	}
 
 	if (joycount > 0)
@@ -217,10 +84,11 @@ static void in_sdl_free(void *drv_data)
 }
 
 static const char * const *
-in_sdl_get_key_names(int *count)
+in_sdl_get_key_names(const in_drv_t *drv, int *count)
 {
+	const struct in_sdl_pdata *pdata = drv->pdata;
 	*count = SDLK_LAST;
-	return in_sdl_keys;
+	return pdata->key_names;
 }
 
 /* could use SDL_GetKeyState, but this gives better packing */
@@ -443,10 +311,10 @@ static int in_sdl_menu_translate(void *drv_data, int keycode, char *charcode)
 		}
 
 		if (charcode != NULL && (unsigned int)keycode < SDLK_LAST &&
-		    in_sdl_keys[keycode] != NULL && in_sdl_keys[keycode][1] == 0)
+		    pdata->key_names[keycode] != NULL && pdata->key_names[keycode][1] == 0)
 		{
 			ret |= PBTN_CHAR;
-			*charcode = in_sdl_keys[keycode][0];
+			*charcode = pdata->key_names[keycode][0];
 		}
 	}
 

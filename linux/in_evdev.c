@@ -288,7 +288,7 @@ static void in_evdev_free(void *drv_data)
 }
 
 static const char * const *
-in_evdev_get_key_names(int *count)
+in_evdev_get_key_names(const in_drv_t *drv, int *count)
 {
 	*count = KEY_CNT;
 	return in_evdev_keys;

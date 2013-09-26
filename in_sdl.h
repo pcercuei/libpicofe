@@ -11,6 +11,7 @@ struct in_sdl_pdata {
 	size_t kmap_size;
 	const struct menu_keymap *joy_map;
 	size_t jmap_size;
+	const char * const *key_names;
 };
 
 int in_sdl_init(const struct in_sdl_pdata *pdata,
